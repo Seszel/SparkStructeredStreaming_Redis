@@ -49,23 +49,55 @@ In first terminal run
 
  After some time you can check if data is properly writed to sink (Redis) with this commands in terminal
 
- ```console
+ ```bash
 redis-cli monitor
- ```
+```
 
-  ```console
-hgetall key
- ```
+```bash
+redis-cli
+```
 
-  ```console
-keys PATTERN
- ```
+```bash
+# Displaying all availables keys
+127.0.0.1:6379> keys *
 
-  ```console
-keys ANOMALIES:*
- ```
+# Displaying specific keys matched with pattern
+127.0.0.1:6379> keys NETFLIX:11610:*
+ 1) "NETFLIX:11610:2004-03"
+ 2) "NETFLIX:11610:2002-07"
+ 3) "NETFLIX:11610:2003-05"
+ 4) "NETFLIX:11610:2002-08"
+ 5) "NETFLIX:11610:2003-03"
+ 6) "NETFLIX:11610:2002-12"
+ 7) "NETFLIX:11610:2003-11"
+ 8) "NETFLIX:11610:2002-11"
+ 9) "NETFLIX:11610:2002-10"
+10) "NETFLIX:11610:2003-06"
+11) "NETFLIX:11610:2003-04"
+12) "NETFLIX:11610:2003-02"
+13) "NETFLIX:11610:2004-02"
+14) "NETFLIX:11610:2003-01"
+15) "NETFLIX:11610:2003-10"
+16) "NETFLIX:11610:2003-07"
+17) "NETFLIX:11610:2004-01"
+18) "NETFLIX:11610:2002-06"
+19) "NETFLIX:11610:2003-09"
+20) "NETFLIX:11610:2003-08"
+21) "NETFLIX:11610:2003-12"
+22) "NETFLIX:11610:2002-09"
 
-
-  ```console
-keys NETFLIX:*
- ```
+# Displaying values of specific key
+127.0.0.1:6379> hgetall NETFLIX:11610:2004-03
+ 1) "sum_of_rates"
+ 2) "84"
+ 3) "number_of_rates"
+ 4) "25"
+ 5) "month"
+ 6) "2004-03"
+ 7) "film_id"
+ 8) "11610"
+ 9) "number_of_unique_users_rates"
+10) "26"
+11) "film_title"
+12) "A Brilliant Madness: American Experience"
+```
