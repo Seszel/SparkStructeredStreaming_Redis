@@ -1,6 +1,11 @@
 # Spark Structered Streaming with Redis
 
-Streaming Processing with Spark Structured Streaming with Redis for Netflix Prize Data 
+Streaming Processing with Spark Structured Streaming with Redis for Netflix Prize Data.
+
+Application:
+- reads data from the Kafka server (specified topic),
+- maintain a real-time image from this data (aggregations),
+- responds to the occuring "anomalies" by registering their occurrence.
 
 Source of data: https://www.kaggle.com/datasets/netflix-inc/netflix-prize-data?select=README
 
