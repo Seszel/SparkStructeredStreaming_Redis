@@ -32,15 +32,11 @@ public class TestProducer {
         props.put("buffer.memory", 33554432);
         props.put("key.serializer", "org.apache.kafka.common.serialization.StringSerializer");
         props.put("value.serializer", "org.apache.kafka.common.serialization.StringSerializer");
-        // wprowadź poniżej pozostałe parametry producenta Kafki
-        // patrz materiały wykładowe lub dokumentacja
 
-        // uzupełnij polecenie tworzące producenta Kafki
         KafkaProducer<String, String> producer = new KafkaProducer<>(props);
         for (int j=0; j<100; j++)
             producer.send(new ProducerRecord<String, String>("my-topic",
                     Integer.toString(j), Integer.toString(j)));
-        // przeanalizuj poniższy kod aby dowiedzieć się jak on działa
         final File folder = new File(params[0]);
         File[] listOfFiles = folder.listFiles();
         String[] listOfPaths = Arrays.stream(listOfFiles).
@@ -49,9 +45,6 @@ public class TestProducer {
         for (final String fileName : listOfPaths) {
             try (Stream<String> stream = Files.lines(Paths.get(fileName)).
                     skip(Integer.parseInt(params[3]))) {
-                // uzupełnij polecenie wysyłające komunikat do odpowiedniego
-                // tematu Kafki. Do wskazania tematu użyj zmiennej params[2]
-                // Kluczem niech będzie wyrażenie String.valueOf(line.hashCode())
                 stream.forEach(line -> producer.send(new ProducerRecord<String, String>(params[2],
                         String.valueOf(line.hashCode()), line)));
                 TimeUnit.SECONDS.sleep(Integer.parseInt(params[1]));
