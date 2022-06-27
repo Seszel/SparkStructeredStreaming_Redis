@@ -1,4 +1,4 @@
-# SparkStructeredStreaming with Redis
+# Spark Structered Streaming with Redis
 
 Streaming Processing with Spark Structured Streaming with Redis for Netflix Prize Data 
 
